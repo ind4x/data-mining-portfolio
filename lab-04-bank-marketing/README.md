@@ -1,40 +1,84 @@
-# Lab 04: bank marketing binary classification analysis
+# Lab 04: Bank Marketing Binary Classification Analysis
 
-This laboratory builds and evaluates machine learning models to predict whether
-a client will subscribe to a term deposit. The project follows a complete
-machine learning pipeline from exploratory data analysis to model performance
-comparison.
+This laboratory implements a predictive data mining pipeline to model and forecast
+client term deposit subscription outcomes based on direct marketing campaign interactions.
 
-## Key technical tasks
+---
 
-- Exploratory data analysis (EDA): Investigates feature distributions and
-  relationships with the target variable.
-- Data preprocessing:
-    - Imputed missing values with the mode.
-    - Implemented binary encoding for the target variable.
-    - Used one-hot encoding for categorical features.
-    - Applied standard scaling for numerical features.
-- Model implementation:
-    - Logistic regression: Serves as a baseline classifier.
-    - Decision tree: Explores non-linear patterns.
-    - Random forest: Uses ensemble learning for improved robustness.
-- Performance evaluation: Uses recall, F1-score, and confusion matrices to
-  prioritize identifying potential subscribers.
+## Lab Structure
 
-## Analytical findings
+```text
+lab-04-bank-marketing/
+├── README.md                          # Technical specification and model comparison benchmarks
+├── data/                              # Demographic and marketing records
+│   └── bank-marketing.csv             # Structured dataset with 4,119 instances and 20 features
+└── src/
+    └── bank-marketing-analysis.ipynb  # Interactive machine learning pipeline and model evaluations
+```
 
-- Class imbalance: The dataset is imbalanced, requiring the use of F1-score
-  over accuracy as a primary metric.
-- Key predictors: Call duration and previous campaign outcomes serve as
-  significant indicators of success.
-- Model comparison: The random forest model provides the best balance between
-  precision and recall for this task.
+### File Responsibilities
 
-## Dataset
+- **`src/bank-marketing-analysis.ipynb`**: Complete executable Python notebook implementing missing data imputation, one-hot categorical encoding, feature standardization, class imbalance mitigation, baseline Logistic Regression, non-linear Decision Trees, and ensemble Random Forest classification.
+- **`data/bank-marketing.csv`**: Direct marketing campaign dataset containing customer attributes, economic indices, and binary conversion targets.
 
-- `bank-marketing.csv`: Contains 4,119 records with 20 features related to
-  client demographics, social-economic indicators, and campaign contact
-  history.
+---
 
-Authored by Youssef Fellah.
-Developed for the Engineering Cycle at Mundiapolis University.
+## Pipeline Architecture & Model Comparison
+
+```text
+Raw Marketing Dataset (4,119 samples x 20 features)
+                       |
+                       v
+       +-------------------------------+
+       | Preprocessing & Feature Eng.  |
+       |  - Mode imputation            |
+       |  - One-hot encoding           |
+       |  - StandardScaler             |
+       +-------------------------------+
+                       |
+                       +-----------------------+
+                       |                       |
+                       v                       v
+            +---------------------+ +---------------------+
+            | Logistic Regression | |    Decision Tree    |
+            |     (Baseline)      | |   (Non-linear)      |
+            +---------------------+ +---------------------+
+                       |                       |
+                       +-----------+-----------+
+                                   |
+                                   v
+                      +-------------------------+
+                      |   Random Forest Model   |
+                      |  (Ensemble Optimization)|
+                      +-------------------------+
+                                   |
+                                   v
+             F1-Score & Recall Optimization on Minority Class
+```
+
+---
+
+## Execution Instructions
+
+Launch Jupyter and run the notebook:
+
+```bash
+cd lab-04-bank-marketing/src
+jupyter notebook bank-marketing-analysis.ipynb
+```
+
+---
+
+## Technology Stack
+
+- **Language:** Python 3
+- **Data Engineering:** Pandas, NumPy
+- **Machine Learning:** Scikit-learn (`LogisticRegression`, `DecisionTreeClassifier`, `RandomForestClassifier`, `StandardScaler`, `metrics`)
+- **Visualization:** Matplotlib, Seaborn
+
+---
+
+## Author
+
+- **Author:** Youssef Fellah ([ind4x_](https://github.com/ind4x))
+- **Institution:** Mundiapolis University, Engineering Cycle
